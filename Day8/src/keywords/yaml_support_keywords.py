@@ -62,7 +62,7 @@ def foreach(obj, path):
 
     b_found = False
     for (path, value) in dpath.util.search(obj, path, yielded=True, separator="/"):
-        print(path, value)
+        # print(path, value)
         b_found = True
         return value
 

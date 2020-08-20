@@ -76,7 +76,7 @@ def run_function(suite_test, step_functions, kw_name, kw_args, kw_type):
         set return value as robot variable
         saved varibale type only support: global, suite, test, common varibale
     '''
-    print(step_functions)
+    # print(step_functions)
     if step_functions:
 
         suite_test.keywords.create(
@@ -184,7 +184,7 @@ suite_steps = order_suite_setup_and_teardown(suite_steps)
 
 create_case_step(suite, suite_steps)
 
-print(suite.keywords)
+# print(suite.keywords)
 for case in testcases:
     test_case_name = case.get('name')
     tags = case.get('tags')
