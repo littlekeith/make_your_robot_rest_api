@@ -179,9 +179,9 @@ for _lib in librarys:
 import_libs_by_path(suite, librarys_path)
 
 # un-comment follows line, see what happen
-print(111, suite_steps)
+
 suite_steps = order_suite_setup_and_teardown(suite_steps)
-print(222, suite_steps)
+
 create_case_step(suite, suite_steps)
 
 print(suite.keywords)
