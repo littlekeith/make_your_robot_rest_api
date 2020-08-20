@@ -1,0 +1,78 @@
+config:
+  suite_name: Activate Variable
+  librarys:
+    - OperatingSystem
+    - keywords/yaml_support_keywords.py
+
+  steps:
+    
+    - 
+      keyword: set_suite_variable
+      args: 
+        - ${testvar}
+        - ${svar} 
+      type: setup
+      run_func:
+        - 
+          name: simple_function_with_param
+          args:
+            - 123
+            -
+            - True
+          saved_var_names: 
+            - 
+              name: ${fvar}
+              dpath: "0"
+            - 
+              name: ${svar}
+              dpath: "1/name"
+            - 
+              name: ${tvar}
+              dpath: "2"
+            
+          # type: set_global_variable, set_suite_variable, set_varibale, set_test_variable
+          type: set_suite_variable
+
+
+testcases:
+-
+  name: Should Activate Skynet
+  tags: smoke
+  steps:
+    - 
+      keyword: Set Environment Variable
+      args:
+        - SKYNET
+        - activated
+    
+
+  assertions:
+    - 
+      keyword: Environment Variable Should Be Set
+      args: 
+        - SKYNET
+-
+  name: simple show Variable
+  tags: smoke
+  steps:
+    - 
+      keyword: simple_show_variable
+      args:
+        - ${fvar}
+
+    - 
+      keyword: simple_show_variable
+      args:
+        - ${svar}
+
+    - 
+      keyword: simple_show_variable
+      args:
+        - ${tvar}
+
+    
+
+
+
+      
+

@@ -1,0 +1,35 @@
+config:
+  suite_name: Activate Variable
+  librarys:
+    - OperatingSystem
+    - mykeywords.py
+
+  steps:
+    -
+      keyword: simple_teardown
+      type: teardown
+    
+    - 
+      keyword: setup_multiple_keywords
+      args: 
+        - this is a simple message 
+      type: setup
+      
+testcases:
+-
+  name: Should Activate Skynet
+  tags: smoke
+  steps:
+    - 
+      keyword: Set Environment Variable
+      args:
+        - SKYNET
+        - activated
+  assertions:
+    - 
+      keyword: Environment Variable Should Be Set
+      args: 
+        - SKYNET
+
+      
+
