@@ -1,0 +1,131 @@
+config:
+  name: Activate Variable
+  librarys:
+    - OperatingSystem
+    - keywords/dynamic_save.py
+    - keywords/asserts.py
+
+  setup:
+    # get function result and save into variable: result
+    # and then use builtin.set_suite_variable to 
+    # set result value into variable: testvar
+    keyword: set_suite_variable
+    args:
+      - ${testvar}
+      - ${result}
+    run_func:
+      - 
+          keyword: return_func
+          saved_var_names: 
+            - 
+              name: ${result}
+              
+          # type: set_global_variable, set_suite_variable, set_test_variable
+          type: set_suite_variable
+
+  teardown:
+    keyword: log
+    args:
+      - ${testvar}
+
+
+testcases:
+-
+  name: Test return list
+  tags: smoke
+  steps:
+    - 
+      keyword: log
+      args:
+        - ${first_var}
+      run_func:
+        -
+          keyword: return_func_list
+          saved_var_names:
+            - 
+              name: ${first_var}
+              dpath: 0
+            - 
+              name: ${last_var}
+              dpath: 2/a
+
+    - 
+      keyword: log
+      args:
+        - ${last_var}
+    
+
+  assertions:
+    - 
+      keyword: should_be_not_none
+      args: 
+        - ${last_var}
+-
+  name: Test return dict
+  tags: smoke
+  steps:
+    - 
+      keyword: log
+      args:
+        - ${first}
+      run_func:
+        -
+          keyword: return_func_dict
+          saved_var_names:
+            - 
+              name: ${first}
+              dpath: a
+            - 
+              name: ${last}
+    - 
+      keyword: log
+      args:
+        - ${last}
+    
+
+  assertions:
+    - 
+      keyword: should_be_not_none
+      args: 
+        - ${last}
+-
+  name: Test return string
+  tags: smoke
+  steps:
+    - 
+      keyword: log
+      args:
+        - ${strvar}
+      run_func:
+        -
+          keyword: return_func
+          saved_var_names:
+            - 
+              name: ${strvar}
+              
+  assertions:
+    - 
+      keyword: should_be_not_none
+      args: 
+        - ${strvar}
+-
+  name: Test setup
+  tags: smoke
+  steps:
+    - 
+      keyword: log
+      args:
+        - ${testvar}
+      
+  assertions:
+    - 
+      keyword: should_be_not_none
+      args: 
+        - ${testvar}
+
+    
+
+
+
+      
+

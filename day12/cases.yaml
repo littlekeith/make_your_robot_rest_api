@@ -1,0 +1,101 @@
+config:
+  name: Simple test the api--/user/login
+  uri: /user/login
+  method: get
+  librarys:
+    - RequestsLibrary
+    - keywords/dynamic_save.py
+    - keywords/asserts.py
+    - keywords/common_date.py
+  setup:
+
+    keyword: create_session
+    args:
+      - localenv
+      - http://127.0.0.1:5000/v2/
+
+testcases:
+-
+  name: simple send get request
+  tags: smoke
+  data: null
+  json: null
+  params: 
+    username: testname
+    password: 123456
+  session: localenv
+  assign: 
+    - ${resp}
+
+  assertions:
+    - 
+      keyword: log
+      args: 
+        - ${resp.json()}
+    - 
+      keyword: log
+      args: 
+        - ${resp.url}
+    - 
+      keyword: assert_equal
+      args: 
+        - ${resp.status_code}
+        - 200
+    - 
+      keyword: assert_equal_by_dpath
+      name: assert time by given constant string time. 
+      args: 
+        - ${resp.json()}
+        - date_created
+        # - 2020-10-26 will failure to assert
+        - "2020-10-26" # if set 2020-10-26, it will be date obj. Must to set "2020-10-26"
+    - 
+      keyword: assert_equal_by_dpath
+      name: assert time by variable. 
+      args: 
+        - ${resp.json()}
+        - date_modify
+        - ${expected_date}
+      run_func:
+        - 
+          keyword: get_current_day
+          args: 
+            - "%Y-%m-%d"
+          saved_var_names: 
+            - 
+              name: ${expected_date}
+          # type: set_global_variable, set_suite_variable, set_test_variable
+          type: set_test_variable
+    - 
+      keyword: assert_equal_by_dpath
+      name: assert href by fuzzy dpath. 
+      args: 
+        - ${resp.json()}
+        # - "**/name"
+        # - Color
+        - "**/href"
+        - https://example.com/wp-json/wc/v3/products/22
+    - 
+      keyword: assert_equal_by_dpath
+      name: assert href by specify dpath. 
+      args: 
+        - ${resp.json()}
+        - _links/up/0/href
+        - https://example.com/wp-json/wc/v3/products/22
+    - 
+      keyword: assert_equal_by_dpath
+      name: assert a python object. 
+      args: 
+        - ${resp.json()}
+        # - herf
+        - _links/collection
+        - ${collection}
+      run_func:
+        - 
+          keyword: get_collection
+          saved_var_names: 
+            - 
+              name: ${collection}
+          # type: set_global_variable, set_suite_variable, set_test_variable
+          type: set_test_variable
+
