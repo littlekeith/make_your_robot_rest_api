@@ -1,0 +1,58 @@
+config:
+  name: Simple test the api--/user/logout
+  uri: /user/logout
+  method: get
+  librarys:
+    - RequestsLibrary
+    - keywords/dynamic_save.py
+    - keywords/asserts.py
+    - keywords/common_date.py
+  
+  setup:
+
+    keyword: create_session
+    args:
+      - localenv
+      - http://127.0.0.1:5000/v2/
+  apis:
+    - 
+      file: user_login.yaml
+        
+
+testcases:
+-
+  name: success logout
+  tags: smoke
+  data: null
+  json: null
+  params: null
+  session: localenv
+  assign: 
+    - ${resp}
+
+  assertions:
+    - 
+      keyword: log
+      args: 
+        - ${resp.json()}
+    - 
+      keyword: log
+      args: 
+        - ${resp.cookies}
+    - 
+      keyword: log
+      args: 
+        - ${resp.url}
+    - 
+      keyword: assert_equal
+      args: 
+        - ${resp.status_code}
+        - 200
+    - 
+      keyword: assert_equal_by_dpath
+      name: assert logout was true. 
+      args: 
+        - ${resp.json()}
+        - logout
+        - true
+ 
