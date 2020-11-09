@@ -1,0 +1,94 @@
+config:
+  name: Simple test the api--/user/logout
+  uri: /user/logout
+  method: get
+  librarys:
+    - RequestsLibrary
+    - keywords/dynamic_save.py
+    - keywords/asserts.py
+    - keywords/common_date.py
+    - keywords/parsing_responses.py
+    - keywords/sessions.py
+  
+  setup:
+
+    keyword: create_session
+    args:
+      - localenv
+      - http://127.0.0.1:5000/v2/
+    assign:
+      - ${session}
+  apis:
+    - 
+      file: user_login.yaml
+      run_func:
+        - 
+          keyword: extract_variable_from_reponse
+          args: 
+            - ${resp.json()}
+            - access_token
+          saved_var_names: 
+            - 
+              name: ${real_access_token}
+          type: set_suite_variable
+
+testcases:
+-
+  name: success logout
+  tags: smoke
+  data: null
+  json: null
+  params: null
+  session: localenv
+  # 配合第二种方法, 传递到request中
+  headers: ${requests_headers}
+  assign: 
+    - ${resp}
+  # 第一种方法: 更新整个session的headers
+  # setup:
+  #   keyword: update_header_key
+  #   args:
+  #     - Authorization
+  #     - Bearer ${real_access_token} 
+  #      - ${session}
+  # 第二种方法: 传递headers参数
+  setup:
+    keyword: update_header_key
+    args:
+      - Authorization
+      - Bearer ${real_access_token}
+    assign:
+      - ${requests_headers}
+
+  teardown:
+    keyword: Log
+    args:
+      - ${session.headers}
+
+
+  assertions:
+    - 
+      keyword: log
+      args: 
+        - ${resp.json()}
+    - 
+      keyword: log
+      args: 
+        - ${resp.cookies}
+    - 
+      keyword: log
+      args: 
+        - ${real_access_token}
+    - 
+      keyword: assert_equal
+      args: 
+        - ${resp.status_code}
+        - 200
+    - 
+      keyword: assert_equal_by_dpath
+      name: assert logout was true. 
+      args: 
+        - ${resp.json()}
+        - logout
+        - true
+ 
