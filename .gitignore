@@ -1,9 +1,9 @@
-**/output
+**/outputs
 **/__pycache__
 
 __pycache__/**
-report
-report/**
+reports
+reports/**
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
