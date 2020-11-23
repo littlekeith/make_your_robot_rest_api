@@ -1,6 +1,6 @@
-*.xml
+**/output
 **/__pycache__
-*.html
+
 __pycache__/**
 report
 report/**

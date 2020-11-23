@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.1 (Python 3.6.8 on win32)" generated="20200820 10:00:54.989" rpa="false">
+<suite id="s1" name="Activate Variable">
+<kw name="Run Function Keyword" library="yaml_support_keywords" type="setup">
+<doc>run functions which also as keywords
+set return value as robot variable
+saved varibale type only support: global, suite, test, common varibale</doc>
+<arguments>
+<arg>[ordereddict([('name', 'simple_function_with_param'), ('args', [123, None, True]), ('saved_var_names', [ordereddict([('name', '${fvar}'), ('dpath', '0')]), ordereddict([('name', '${svar}'), ('dpath', '1/name')]), ordereddict([('name', '${tvar}'), ('dpath', '2')])]), ('type', 'set_suite_variable')])]</arg>
+<arg>set_suite_variable</arg>
+<arg>['${testvar}', '${svar}']</arg>
+</arguments>
+<kw name="Simple Function With Param" library="yaml_support_keywords">
+<arguments>
+<arg>123</arg>
+<arg>None</arg>
+<arg>True</arg>
+</arguments>
+<msg timestamp="20200820 10:00:55.060" level="INFO">123:None:True</msg>
+<msg timestamp="20200820 10:00:55.060" level="INFO">['123', {'test': 'simple test', 'name': 'simple name'}, 'simple msg']</msg>
+<status status="PASS" starttime="20200820 10:00:55.060" endtime="20200820 10:00:55.060"></status>
+</kw>
+<msg timestamp="20200820 10:00:55.060" level="INFO">the receive: [ordereddict([('name', '${fvar}'), ('dpath', '0')]), ordereddict([('name', '${svar}'), ('dpath', '1/name')]), ordereddict([('name', '${tvar}'), ('dpath', '2')])]</msg>
+<msg timestamp="20200820 10:00:55.060" level="INFO">the return value: ['123', {'test': 'simple test', 'name': 'simple name'}, 'simple msg']</msg>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${fvar}</arg>
+<arg>123</arg>
+</arguments>
+<msg timestamp="20200820 10:00:55.070" level="INFO">${fvar} = 123</msg>
+<status status="PASS" starttime="20200820 10:00:55.069" endtime="20200820 10:00:55.071"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${svar}</arg>
+<arg>simple name</arg>
+</arguments>
+<msg timestamp="20200820 10:00:55.072" level="INFO">${svar} = simple name</msg>
+<status status="PASS" starttime="20200820 10:00:55.071" endtime="20200820 10:00:55.072"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${tvar}</arg>
+<arg>simple msg</arg>
+</arguments>
+<msg timestamp="20200820 10:00:55.073" level="INFO">${tvar} = simple msg</msg>
+<status status="PASS" starttime="20200820 10:00:55.072" endtime="20200820 10:00:55.073"></status>
+</kw>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${/} = \</msg>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${:} = ;</msg>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${\n} = 
+</msg>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${DEBUG_FILE} = NONE</msg>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${EXECDIR} = c:\work\git\make_your_robot_rest_api\Day8\src</msg>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${False} = False</msg>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${fvar} = 123</msg>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${LOG_FILE} = c:\work\git\make_your_robot_rest_api\Day8\src\reports\skynet-log.html</msg>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${LOG_LEVEL} = INFO</msg>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${None} = None</msg>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${null} = None</msg>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${OUTPUT_DIR} = c:\work\git\make_your_robot_rest_api\Day8\src\reports</msg>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${OUTPUT_FILE} = c:\work\git\make_your_robot_rest_api\Day8\src\reports\skynet-output.xml</msg>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${PREV_TEST_MESSAGE} = </msg>
+<msg timestamp="20200820 10:00:55.074" level="INFO">${PREV_TEST_NAME} = </msg>
+<msg timestamp="20200820 10:00:55.075" level="INFO">${PREV_TEST_STATUS} = </msg>
+<msg timestamp="20200820 10:00:55.075" level="INFO">${REPORT_FILE} = c:\work\git\make_your_robot_rest_api\Day8\src\reports\skynet-reporter.html</msg>
+<msg timestamp="20200820 10:00:55.075" level="INFO">${SPACE} =  </msg>
+<msg timestamp="20200820 10:00:55.075" level="INFO">${SUITE_DOCUMENTATION} = </msg>
+<msg timestamp="20200820 10:00:55.075" level="INFO">&amp;{SUITE_METADATA} = { }</msg>
+<msg timestamp="20200820 10:00:55.075" level="INFO">${SUITE_NAME} = Activate Variable</msg>
+<msg timestamp="20200820 10:00:55.075" level="INFO">${SUITE_SOURCE} = </msg>
+<msg timestamp="20200820 10:00:55.075" level="INFO">${svar} = simple name</msg>
+<msg timestamp="20200820 10:00:55.075" level="INFO">${TEMPDIR} = C:\Users\BJC074\AppData\Local\Temp</msg>
+<msg timestamp="20200820 10:00:55.075" level="INFO">${True} = True</msg>
+<msg timestamp="20200820 10:00:55.075" level="INFO">${tvar} = simple msg</msg>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${testvar}</arg>
+<arg>${svar}</arg>
+</arguments>
+<msg timestamp="20200820 10:00:55.076" level="INFO">${testvar} = simple name</msg>
+<status status="PASS" starttime="20200820 10:00:55.075" endtime="20200820 10:00:55.076"></status>
+</kw>
+<msg timestamp="20200820 10:00:55.076" level="INFO">0 123
+1/name simple name
+2 simple msg</msg>
+<status status="PASS" starttime="20200820 10:00:55.059" endtime="20200820 10:00:55.076"></status>
+</kw>
+<test id="s1-t1" name="Should Activate Skynet">
+<kw name="Set Environment Variable" library="OperatingSystem">
+<doc>Sets an environment variable to a specified value.</doc>
+<arguments>
+<arg>SKYNET</arg>
+<arg>activated</arg>
+</arguments>
+<msg timestamp="20200820 10:00:55.078" level="INFO">Environment variable 'SKYNET' set to value 'activated'.</msg>
+<status status="PASS" starttime="20200820 10:00:55.077" endtime="20200820 10:00:55.078"></status>
+</kw>
+<kw name="Environment Variable Should Be Set" library="OperatingSystem">
+<doc>Fails if the specified environment variable is not set.</doc>
+<arguments>
+<arg>SKYNET</arg>
+</arguments>
+<msg timestamp="20200820 10:00:55.079" level="INFO">Environment variable 'SKYNET' is set to 'activated'.</msg>
+<status status="PASS" starttime="20200820 10:00:55.079" endtime="20200820 10:00:55.079"></status>
+</kw>
+<tags>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" starttime="20200820 10:00:55.076" endtime="20200820 10:00:55.080" critical="yes"></status>
+</test>
+<test id="s1-t2" name="simple show Variable">
+<kw name="Simple Show Variable" library="yaml_support_keywords">
+<arguments>
+<arg>${fvar}</arg>
+</arguments>
+<msg timestamp="20200820 10:00:55.082" level="INFO">the value is: 123 </msg>
+<status status="PASS" starttime="20200820 10:00:55.082" endtime="20200820 10:00:55.082"></status>
+</kw>
+<kw name="Simple Show Variable" library="yaml_support_keywords">
+<arguments>
+<arg>${svar}</arg>
+</arguments>
+<msg timestamp="20200820 10:00:55.084" level="INFO">the value is: simple name </msg>
+<status status="PASS" starttime="20200820 10:00:55.083" endtime="20200820 10:00:55.084"></status>
+</kw>
+<kw name="Simple Show Variable" library="yaml_support_keywords">
+<arguments>
+<arg>${tvar}</arg>
+</arguments>
+<msg timestamp="20200820 10:00:55.084" level="INFO">the value is: simple msg </msg>
+<status status="PASS" starttime="20200820 10:00:55.084" endtime="20200820 10:00:55.084"></status>
+</kw>
+<tags>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" starttime="20200820 10:00:55.081" endtime="20200820 10:00:55.085" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20200820 10:00:54.995" endtime="20200820 10:00:55.087"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0">Critical Tests</stat>
+<stat pass="2" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="2" fail="0">smoke</stat>
+</tag>
+<suite>
+<stat pass="2" fail="0" id="s1" name="Activate Variable">Activate Variable</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

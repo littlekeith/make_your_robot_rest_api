@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.6.8 on win32)" generated="20200819 11:40:57.969" rpa="false">
+<suite id="s1" name="Activate Variable">
+<kw name="Setup Multiple Keywords" library="mykeywords" type="setup">
+<arguments>
+<arg>this is a simple message</arg>
+</arguments>
+<kw name="Simple Set Variable" library="mykeywords">
+<arguments>
+<arg>this is a simple message</arg>
+</arguments>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${testvar}</arg>
+<arg>this is a simple message</arg>
+</arguments>
+<msg timestamp="20200819 11:40:58.019" level="INFO">${testvar} = this is a simple message</msg>
+<status status="PASS" starttime="20200819 11:40:58.018" endtime="20200819 11:40:58.020"></status>
+</kw>
+<status status="PASS" starttime="20200819 11:40:58.018" endtime="20200819 11:40:58.020"></status>
+</kw>
+<kw name="Simple Show Variable" library="mykeywords">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${testvar}</arg>
+</arguments>
+<msg timestamp="20200819 11:40:58.021" level="INFO">this is a simple message</msg>
+<status status="PASS" starttime="20200819 11:40:58.020" endtime="20200819 11:40:58.021"></status>
+</kw>
+<status status="PASS" starttime="20200819 11:40:58.020" endtime="20200819 11:40:58.021"></status>
+</kw>
+<status status="PASS" starttime="20200819 11:40:58.018" endtime="20200819 11:40:58.021"></status>
+</kw>
+<test id="s1-t1" name="Should Activate Skynet">
+<kw name="Set Environment Variable" library="OperatingSystem">
+<doc>Sets an environment variable to a specified value.</doc>
+<arguments>
+<arg>SKYNET</arg>
+<arg>activated</arg>
+</arguments>
+<msg timestamp="20200819 11:40:58.022" level="INFO">Environment variable 'SKYNET' set to value 'activated'.</msg>
+<status status="PASS" starttime="20200819 11:40:58.022" endtime="20200819 11:40:58.022"></status>
+</kw>
+<kw name="Environment Variable Should Be Set" library="OperatingSystem">
+<doc>Fails if the specified environment variable is not set.</doc>
+<arguments>
+<arg>SKYNET</arg>
+</arguments>
+<msg timestamp="20200819 11:40:58.023" level="INFO">Environment variable 'SKYNET' is set to 'activated'.</msg>
+<status status="PASS" starttime="20200819 11:40:58.023" endtime="20200819 11:40:58.023"></status>
+</kw>
+<tags>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" starttime="20200819 11:40:58.021" endtime="20200819 11:40:58.024" critical="yes"></status>
+</test>
+<kw name="Simple Teardown" library="mykeywords" type="teardown">
+<msg timestamp="20200819 11:40:58.027" level="INFO">run suite teardown</msg>
+<status status="PASS" starttime="20200819 11:40:58.027" endtime="20200819 11:40:58.027"></status>
+</kw>
+<status status="PASS" starttime="20200819 11:40:57.972" endtime="20200819 11:40:58.028"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">smoke</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Activate Variable">Activate Variable</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
